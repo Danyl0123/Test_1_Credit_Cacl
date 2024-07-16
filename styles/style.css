@@ -2,7 +2,7 @@ body {
   background-color: rgb(164, 156, 255);
 }
 .wrapper {
-  width: 900px;
+  max-width: 900px;
   margin: 10rem auto;
   background-color: #fff;
   padding: 100px 50px;
@@ -19,6 +19,14 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+  @media screen and (max-width: 400px) {
+    align-items: start;
+    margin-bottom: 20px;
+  }
 }
 .form {
   display: flex;
@@ -31,13 +39,18 @@ body {
   align-items: flex-start;
   gap: 5px;
   font-size: 16px;
+  max-width: 100%;
 }
 .form__input {
   padding: 10px 16px;
-  width: 200px;
+  max-width: 200px;
   border: 2px solid rgb(134, 125, 230);
   border-radius: 6px;
   font-size: 16px;
+  @media screen and (max-width: 400px) {
+    padding: 5px 8px;
+    max-width: 150px;
+  }
 }
 .form__btn {
   align-self: flex-start;
@@ -46,6 +59,13 @@ body {
   border: 1px solid black;
   border-radius: 6px;
   color: #fff;
+  @media screen and (max-width: 700px) {
+    align-self: center;
+  }
+  @media screen and (max-width: 400px) {
+    align-self: flex-start;
+    padding: 6px 8px;
+  }
 }
 .form__btn:hover {
   cursor: pointer;
@@ -66,6 +86,10 @@ body {
   color: #fff;
   border: 1px solid black;
   border-radius: 6px;
+  @media screen and (max-width: 400px) {
+    padding: 5px 10px;
+    margin-top: 8px;
+  }
 }
 .form__btn-4changes:hover {
   cursor: pointer;
@@ -75,6 +99,9 @@ body {
   margin-bottom: 10px;
   padding-left: 20px;
   font-weight: 700;
+  @media screen and (max-width: 400px) {
+    padding-left: 0;
+  }
 }
 .error-input {
   border: 2px solid red;
