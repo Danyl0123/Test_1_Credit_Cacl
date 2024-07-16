@@ -8,37 +8,48 @@
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <div class="container">
+    <div class="container">
+      <div class="wrapper">
         <div class="wrapper__form-block">
           <form class="form">
             <label class="form__label" for="sumOfCredit"
               >Введіть суму кредиту у грн
-              <input
-                class="form__input"
-                id="sumOfCredit"
-                type="text"
-                name="sumOfCredit"
-              />
-              <input
-                type="range"
-                id="sumOfCreditSlider"
-                min="1000"
-                max="50000"
-                step="100"
-              />
+              <div class="input__flex">
+                <input
+                  class="form__input"
+                  id="sumOfCredit"
+                  type="text"
+                  name="sumOfCredit"
+                />
+                <div class="form__btn-group">
+                  <button class="form__btn-4changes" id="sumOfCreditUp">
+                    &#8593;</button
+                  ><button class="form__btn-4changes" id="sumOfCreditDown">
+                    &#8595;
+                  </button>
+                </div>
+              </div>
               <div id="sumOfCredit-error"></div>
             </label>
             <label class="form__label" for="repaymentPeriod"
-              >Введіть кількість днів для погашення
-              <input class="form__input" id="repaymentPeriod" type="text" />
+              >Введіть термін кредитування
+              <div class="input__flex">
+                <input class="form__input" id="repaymentPeriod" type="text" />
+                <div class="form__btn-group">
+                  <button class="form__btn-4changes" id="periodOfCreditUp">
+                    &#8593;</button
+                  ><button class="form__btn-4changes" id="periodOfCreditDown">
+                    &#8595;
+                  </button>
+                </div>
+              </div>
               <div id="periodOfCredit-error"></div>
             </label>
             <button class="form__btn">Отримати кредит</button>
           </form>
           <div class="wrapper__response-block">
-            <p class="response-block__daily-repayment"></p>
-            <p class="response-block__full-repayment"></p>
+            <p class="response-block__daily-repayment response-text"></p>
+            <p class="response-block__full-repayment response-text"></p>
           </div>
         </div>
       </div>
