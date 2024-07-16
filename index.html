@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="wrapper__form-block">
+          <form class="form">
+            <label class="form__label" for="sumOfCredit"
+              >Введіть суму кредиту у грн
+              <input
+                class="form__input"
+                id="sumOfCredit"
+                type="text"
+                name="sumOfCredit"
+              />
+              <input
+                type="range"
+                id="sumOfCreditSlider"
+                min="1000"
+                max="50000"
+                step="100"
+              />
+              <div id="sumOfCredit-error"></div>
+            </label>
+            <label class="form__label" for="repaymentPeriod"
+              >Введіть кількість днів для погашення
+              <input class="form__input" id="repaymentPeriod" type="text" />
+              <div id="periodOfCredit-error"></div>
+            </label>
+            <button class="form__btn">Отримати кредит</button>
+          </form>
+          <div class="wrapper__response-block">
+            <p class="response-block__daily-repayment"></p>
+            <p class="response-block__full-repayment"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
