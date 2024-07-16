@@ -9,6 +9,10 @@ const sumOfCreditErrorBlock = document.querySelector(`#sumOfCredit-error`);
 const periodOfCreditErrorBlock = document.querySelector(
   `#periodOfCredit-error`
 );
+const sumOfCreditUpBtn = document.querySelector(`#sumOfCreditUp`);
+const sumOfCreditDownBtn = document.querySelector(`#sumOfCreditDown`);
+const daysOfCreditUpBtn = document.querySelector(`#periodOfCreditUp`);
+const daysOfCreditDownBtn = document.querySelector(`#periodOfCreditDown`);
 const responseBlock = document.querySelector(`.wrapper__response-block`);
 const isTouched = {
   sumOfCredit: false,
@@ -23,6 +27,9 @@ const validateSumOfCredit = () => {
   let isSumValid = true;
 
   if (!isValidSum) {
+    isTouched.sumOfCredit
+      ? sumOfCreditInput.classList.add(`error-input`)
+      : null;
     sumOfCreditErrorBlock.textContent = isTouched.sumOfCredit
       ? "Введіть лише суму кредиту"
       : "";
@@ -30,7 +37,9 @@ const validateSumOfCredit = () => {
     responseBlock.style.display = "none";
   } else {
     sumOfCreditErrorBlock.textContent = "";
+    sumOfCreditInput.classList.remove(`error-input`);
     if (sumValue < 1000 || sumValue > 50000) {
+      sumOfCreditInput.classList.add(`error-input`);
       sumOfCreditErrorBlock.textContent =
         "Сума кредиту повинна бути від 1000 грн до 50000 грн";
       isSumValid = false;
@@ -48,6 +57,9 @@ const validateRepaymentPeriod = () => {
   let isPeriodValid = true;
 
   if (!isValidPeriod) {
+    isTouched.repaymentPeriod
+      ? repaymentPeriodInput.classList.add(`error-input`)
+      : null;
     periodOfCreditErrorBlock.textContent = isTouched.repaymentPeriod
       ? "Введіть лише кількість днів для погашення кредиту"
       : "";
@@ -55,7 +67,9 @@ const validateRepaymentPeriod = () => {
     responseBlock.style.display = "none";
   } else {
     periodOfCreditErrorBlock.textContent = "";
+    repaymentPeriodInput.classList.remove(`error-input`);
     if (periodValue < 7 || periodValue > 60) {
+      repaymentPeriodInput.classList.add(`error-input`);
       periodOfCreditErrorBlock.textContent =
         "Кількість днів для погашення має сягати від 7 до 60 днів";
       isPeriodValid = false;
@@ -80,23 +94,7 @@ const validateForm = () => {
 submitBtn.addEventListener(`click`, function (event) {
   event.preventDefault();
   const isFormValid = validateForm();
-  const sumValue = sumOfCreditInput.value;
-  const periodOfRepaymentValue = repaymentPeriodInput.value;
   if (isFormValid) {
-    responseBlock.style.display = "block";
-    const dailyRepaymentValue = calculateDailyRepayment(
-      sumValue,
-      periodOfRepaymentValue,
-      interestRate
-    );
-    const fullRepaymentValue = calculateFullRepaymentValue(
-      dailyRepaymentValue,
-      periodOfRepaymentValue
-    );
-    dailyRepayment.textContent = `Сума щоденного платежу - ${dailyRepaymentValue.toFixed(
-      2
-    )}`;
-    fullRepayment.textContent = `Сума повного погашення - ${fullRepaymentValue}`;
     responseBlock.style.display = "block";
   } else {
     responseBlock.style.display = "none";
@@ -104,13 +102,13 @@ submitBtn.addEventListener(`click`, function (event) {
 });
 
 sumOfCreditInput.addEventListener(`input`, function () {
-  validateForm();
   isTouched.sumOfCredit = true;
+  updateResponse();
 });
 
 repaymentPeriodInput.addEventListener(`input`, function () {
-  validateForm();
   isTouched.repaymentPeriod = true;
+  updateResponse();
 });
 
 const calculateDailyRepayment = (fullSum, fullPeriod, rate) => {
@@ -122,6 +120,55 @@ const calculateDailyRepayment = (fullSum, fullPeriod, rate) => {
 const calculateFullRepaymentValue = (dailyRepaymentValue, fullPeriod) => {
   const fullRepaymentValue = dailyRepaymentValue * fullPeriod;
   return fullRepaymentValue;
+};
+
+sumOfCreditUpBtn.addEventListener(`click`, function (event) {
+  event.preventDefault();
+  sumOfCreditInput.value = +sumOfCreditInput.value + 100;
+  updateResponse();
+});
+
+sumOfCreditDownBtn.addEventListener(`click`, function (event) {
+  event.preventDefault();
+  sumOfCreditInput.value = +sumOfCreditInput.value - 100;
+  updateResponse();
+});
+
+daysOfCreditUpBtn.addEventListener(`click`, function (event) {
+  event.preventDefault();
+  repaymentPeriodInput.value = +repaymentPeriodInput.value + 1;
+  updateResponse();
+});
+
+daysOfCreditDownBtn.addEventListener(`click`, function (event) {
+  event.preventDefault();
+  repaymentPeriodInput.value = +repaymentPeriodInput.value - 1;
+  updateResponse();
+});
+
+const updateResponse = () => {
+  const sumValue = sumOfCreditInput.value;
+  const periodOfRepaymentValue = repaymentPeriodInput.value;
+
+  if (validateSumOfCredit() && validateRepaymentPeriod()) {
+    const dailyRepaymentValue = calculateDailyRepayment(
+      sumValue,
+      periodOfRepaymentValue,
+      interestRate
+    );
+    const fullRepaymentValue = calculateFullRepaymentValue(
+      dailyRepaymentValue,
+      periodOfRepaymentValue
+    );
+
+    dailyRepayment.textContent = `Щоденний платіж - ${dailyRepaymentValue.toFixed(
+      2
+    )} грн`;
+    fullRepayment.textContent = `Повна сума виплати - ${fullRepaymentValue} грн`;
+  } else {
+    responseBlock.style.display = "none";
+  }
+  validateForm();
 };
 
 validateForm();

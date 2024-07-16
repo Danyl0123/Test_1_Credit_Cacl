@@ -1,5 +1,13 @@
 body {
-  background-color: rgb(204, 204, 204);
+  background-color: rgb(164, 156, 255);
+}
+.wrapper {
+  width: 900px;
+  margin: 10rem auto;
+  background-color: #fff;
+  padding: 100px 50px;
+  border: 2px solid black;
+  border-radius: 12px;
 }
 .container {
   max-width: 1180px;
@@ -7,7 +15,10 @@ body {
   padding: 10px 15px;
 }
 .wrapper__form-block {
-  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .form {
   display: flex;
@@ -19,15 +30,53 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
+  font-size: 16px;
 }
 .form__input {
-  padding: 6px 12px;
+  padding: 10px 16px;
+  width: 200px;
+  border: 2px solid rgb(134, 125, 230);
+  border-radius: 6px;
+  font-size: 16px;
 }
 .form__btn {
   align-self: flex-start;
-  padding: 6px 12px;
-  background-color: red;
+  padding: 12px 18px;
+  background-color: rgb(134, 125, 230);
+  border: 1px solid black;
+  border-radius: 6px;
+  color: #fff;
 }
 .form__btn:hover {
   cursor: pointer;
+}
+.input__flex {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.form__btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form__btn-4changes {
+  padding: 8px 16px;
+  background-color: rgb(134, 125, 230);
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+.form__btn-4changes:hover {
+  cursor: pointer;
+}
+.response-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-weight: 700;
+}
+.error-input {
+  border: 2px solid red;
+  background-color: rgb(234, 156, 156);
 }
