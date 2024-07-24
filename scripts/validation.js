@@ -76,7 +76,7 @@ export const validateForm = () => {
   const isPeriodValid = validateRepaymentPeriod();
   const isFormValid = isSumValid && isPeriodValid;
 
-  if (isFormValid && !isTouched.submitBtn) {
+  if (isFormValid) {
     submitBtn.removeAttribute("disabled");
     submitBtn.classList.remove(`disabled`);
   } else {

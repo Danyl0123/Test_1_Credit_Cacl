@@ -53,8 +53,7 @@ const updateResponse = () => {
 
 sumOfCreditInput.addEventListener("input", function () {
   isTouched.sumOfCredit = true;
-  // submitBtn.disabled = false;
-  if (validateForm() && isTouched.submitBtn) {
+  if (validateForm()) {
     responseBlock.style.display = "block";
   }
   updateResponse();
@@ -62,8 +61,7 @@ sumOfCreditInput.addEventListener("input", function () {
 
 repaymentPeriodInput.addEventListener("input", function () {
   isTouched.repaymentPeriod = true;
-  // submitBtn.disabled = false;
-  if (validateForm() && isTouched.submitBtn) {
+  if (validateForm()) {
     responseBlock.style.display = "block";
   }
   updateResponse();
@@ -99,21 +97,10 @@ daysOfCreditUpBtn.addEventListener("click", function (event) {
 daysOfCreditDownBtn.addEventListener("click", function (event) {
   event.preventDefault();
   repaymentPeriodInput.value = +repaymentPeriodInput.value - 1;
-  if (validateForm()) {
-    responseBlock.style.display = "block";
-  }
+
   updateResponse();
 });
 
 submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  const isFormValid = validateForm();
-  if (isFormValid) {
-    responseBlock.style.display = "block";
-    submitBtn.disabled = true;
-    isTouched.submitBtn = true;
-    submitBtn.classList.add(`disabled`);
-  } else {
-    responseBlock.style.display = "none";
-  }
 });
