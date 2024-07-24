@@ -53,37 +53,55 @@ const updateResponse = () => {
 
 sumOfCreditInput.addEventListener("input", function () {
   isTouched.sumOfCredit = true;
-  submitBtn.disabled = false;
+  // submitBtn.disabled = false;
+  if (validateForm() && isTouched.submitBtn) {
+    responseBlock.style.display = "block";
+  }
   updateResponse();
 });
 
 repaymentPeriodInput.addEventListener("input", function () {
   isTouched.repaymentPeriod = true;
-  submitBtn.disabled = false;
+  // submitBtn.disabled = false;
+  if (validateForm() && isTouched.submitBtn) {
+    responseBlock.style.display = "block";
+  }
   updateResponse();
 });
 
 sumOfCreditUpBtn.addEventListener("click", function (event) {
   event.preventDefault();
   sumOfCreditInput.value = +sumOfCreditInput.value + 100;
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
   updateResponse();
 });
 
 sumOfCreditDownBtn.addEventListener("click", function (event) {
   event.preventDefault();
   sumOfCreditInput.value = +sumOfCreditInput.value - 100;
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
   updateResponse();
 });
 
 daysOfCreditUpBtn.addEventListener("click", function (event) {
   event.preventDefault();
   repaymentPeriodInput.value = +repaymentPeriodInput.value + 1;
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
   updateResponse();
 });
 
 daysOfCreditDownBtn.addEventListener("click", function (event) {
   event.preventDefault();
   repaymentPeriodInput.value = +repaymentPeriodInput.value - 1;
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
   updateResponse();
 });
 
@@ -93,6 +111,7 @@ submitBtn.addEventListener("click", function (event) {
   if (isFormValid) {
     responseBlock.style.display = "block";
     submitBtn.disabled = true;
+    isTouched.submitBtn = true;
     submitBtn.classList.add(`disabled`);
   } else {
     responseBlock.style.display = "none";

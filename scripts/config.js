@@ -24,5 +24,6 @@ export const responseBlock = document.querySelector(".wrapper__response-block");
 export const isTouched = {
   sumOfCredit: false,
   repaymentPeriod: false,
+  submitBtn: false,
 };
 export const interestRate = 2.2;
