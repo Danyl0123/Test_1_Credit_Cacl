@@ -46,6 +46,7 @@ body {
   max-width: 100%;
 }
 .form__input {
+  margin-top: 10px;
   padding: 10px 16px;
   max-width: 200px;
   border: 2px solid rgb(134, 125, 230);
@@ -76,8 +77,9 @@ body {
 }
 .input__flex {
   display: flex;
-  gap: 30px;
-  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  align-items: start;
 }
 .form__btn-group {
   display: flex;
@@ -113,10 +115,15 @@ body {
 }
 .error {
   color: red;
+  max-width: 200px;
+  margin-top: 5px;
 }
 .disabled {
   background-color: gray;
 }
 .disabled:hover {
   cursor: not-allowed;
+}
+.slider {
+  margin-top: 10px;
 }

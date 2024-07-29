@@ -20,6 +20,10 @@ export const daysOfCreditUpBtn = document.querySelector("#periodOfCreditUp");
 export const daysOfCreditDownBtn = document.querySelector(
   "#periodOfCreditDown"
 );
+export const sumOfCreditSlider = document.querySelector(`#sumOfCreditSlider`);
+export const repaymentPeriodSlider = document.querySelector(
+  `#repaymentPeriodSlider`
+);
 export const responseBlock = document.querySelector(".wrapper__response-block");
 export const isTouched = {
   sumOfCredit: false,

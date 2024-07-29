@@ -13,6 +13,8 @@ import {
   daysOfCreditDownBtn,
   responseBlock,
   isTouched,
+  repaymentPeriodSlider,
+  sumOfCreditSlider,
 } from "./config.js";
 import {
   validateForm,
@@ -56,11 +58,30 @@ sumOfCreditInput.addEventListener("input", function () {
   if (validateForm()) {
     responseBlock.style.display = "block";
   }
+  sumOfCreditSlider.value = this.value;
   updateResponse();
 });
 
 repaymentPeriodInput.addEventListener("input", function () {
   isTouched.repaymentPeriod = true;
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
+  repaymentPeriodSlider.value = this.value;
+  updateResponse();
+});
+
+sumOfCreditSlider.addEventListener("input", function () {
+  sumOfCreditInput.value = this.value;
+  sumOfCreditInput.textContent = this.value;
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
+  updateResponse();
+});
+repaymentPeriodSlider.addEventListener("input", function () {
+  repaymentPeriodInput.value = this.value;
+  repaymentPeriodInput.textContent = this.value;
   if (validateForm()) {
     responseBlock.style.display = "block";
   }
@@ -73,6 +94,7 @@ sumOfCreditUpBtn.addEventListener("click", function (event) {
   if (validateForm()) {
     responseBlock.style.display = "block";
   }
+  sumOfCreditSlider.value = sumOfCreditInput.value;
   updateResponse();
 });
 
@@ -82,6 +104,7 @@ sumOfCreditDownBtn.addEventListener("click", function (event) {
   if (validateForm()) {
     responseBlock.style.display = "block";
   }
+  sumOfCreditSlider.value = sumOfCreditInput.value;
   updateResponse();
 });
 
@@ -91,13 +114,17 @@ daysOfCreditUpBtn.addEventListener("click", function (event) {
   if (validateForm()) {
     responseBlock.style.display = "block";
   }
+  repaymentPeriodSlider.value = repaymentPeriodInput.value;
   updateResponse();
 });
 
 daysOfCreditDownBtn.addEventListener("click", function (event) {
   event.preventDefault();
   repaymentPeriodInput.value = +repaymentPeriodInput.value - 1;
-
+  if (validateForm()) {
+    responseBlock.style.display = "block";
+  }
+  repaymentPeriodSlider.value = repaymentPeriodInput.value;
   updateResponse();
 });
 

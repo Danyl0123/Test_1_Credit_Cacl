@@ -8,6 +8,8 @@ import {
   periodOfCreditErrorBlock,
   responseBlock,
   isTouched,
+  sumOfCreditSlider,
+  repaymentPeriodSlider,
 } from "./config.js";
 
 submitBtn.disabled = true;
@@ -26,6 +28,7 @@ export const validateSumOfCredit = () => {
       : "";
     isSumValid = false;
     responseBlock.style.display = "none";
+    sumOfCreditSlider.value = 1000;
   } else {
     sumOfCreditErrorBlock.textContent = "";
     sumOfCreditInput.classList.remove("error-input");
@@ -55,6 +58,7 @@ export const validateRepaymentPeriod = () => {
       ? "Введіть лише кількість днів для погашення кредиту"
       : "";
     isPeriodValid = false;
+    repaymentPeriodSlider.value = 7;
     responseBlock.style.display = "none";
   } else {
     periodOfCreditErrorBlock.textContent = "";

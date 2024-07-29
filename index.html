@@ -17,12 +17,24 @@
             </label>
             <div class="form__events-group">
               <div class="input__flex">
-                <input
-                  class="form__input"
-                  id="sumOfCredit"
-                  type="text"
-                  name="sumOfCredit"
-                />
+                <div>
+                  <input
+                    class="form__input"
+                    id="sumOfCredit"
+                    type="text"
+                    name="sumOfCredit"
+                  />
+                  <div id="sumOfCredit-error" class="error"></div>
+                  <input
+                    type="range"
+                    id="sumOfCreditSlider"
+                    class="slider"
+                    min="1000"
+                    max="50000"
+                    step="100"
+                    value="1000"
+                  />
+                </div>
                 <div class="form__btn-group">
                   <button class="form__btn-4changes" id="sumOfCreditUp">
                     &#8593;</button
@@ -31,14 +43,25 @@
                   </button>
                 </div>
               </div>
-              <div id="sumOfCredit-error" class="error"></div>
             </div>
             <label class="form__label" for="repaymentPeriod"
               >Введіть термін кредитування</label
             >
             <div class="form__events-group">
               <div class="input__flex">
-                <input class="form__input" id="repaymentPeriod" type="text" />
+                <div>
+                  <input class="form__input" id="repaymentPeriod" type="text" />
+                  <div id="periodOfCredit-error" class="error"></div>
+                  <input
+                    type="range"
+                    id="repaymentPeriodSlider"
+                    class="slider"
+                    min="7"
+                    max="60"
+                    step="1"
+                    value="7"
+                  />
+                </div>
                 <div class="form__btn-group">
                   <button class="form__btn-4changes" id="periodOfCreditUp">
                     &#8593;</button
@@ -47,7 +70,6 @@
                   </button>
                 </div>
               </div>
-              <div id="periodOfCredit-error" class="error"></div>
             </div>
             <button class="form__btn disabled">Отримати кредит</button>
           </form>
